@@ -3,5 +3,10 @@ class CurrencyConverter
     @hash = hash
   end
 
+  def convert(currency, code)
+    if currency.code == code
+     return currency
+    end
+  end
 
 end

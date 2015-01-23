@@ -1,5 +1,7 @@
 class Currency
-  def initialize()
+  def initialize(amount, code)
+    @amount = amount
+    @code = code
   end
 
 

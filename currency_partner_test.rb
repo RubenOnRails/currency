@@ -2,6 +2,7 @@ require 'minitest/autorun'
 require 'minitest/pride'
 require './currency'
 require './different_currency_code_error'
+require './currency_converter'
 
 class CurrencyTest < Minitest::Test
   def test_00_currency_class_exists
@@ -50,6 +51,14 @@ class CurrencyTest < Minitest::Test
     american_currency = Currency.new(100, "USD")
     assert american_currency * 2 == Currency.new(200, "USD")
     assert american_currency * 2.5 == Currency.new(250, "USD")
+  end
+
+  def test_08_currency_converter_class_exists
+    assert CurrencyConverter
+  end
+
+  def test_09_check_hash_of_codes
+    assert CurrencyConverter.new({USD: 1, EUR: 0.89})
   end
 
 end

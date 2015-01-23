@@ -23,5 +23,13 @@ class CurrencyTest < Minitest::Test
     refute american_currency == other2_currency
   end
 
+  def test_04_currency_can_be_added
+    american_currency = Currency.new(100, "USD")
+    other_currency = Currency.new(100, "USD")
+    result = american_currency.+(other_currency)
+    assert_equal 200, result.amount
+  end
+
+
 
 end

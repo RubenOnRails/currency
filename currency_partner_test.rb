@@ -71,6 +71,12 @@ class CurrencyTest < Minitest::Test
     assert currency_converter.convert(Currency.new(1, :USD), :EUR) == Currency.new(0.89, :EUR)
   end
 
+  def test_12_hash_with_three_currency_codes
+    currency_converter = CurrencyConverter.new({USD: 1, EUR: 0.89, CAN: 1.24})
+    assert_in_delta 1.24, currency_converter.convert(Currency.new(1, :USD), :CAN).amount, 0.05
+    assert_in_delta 1.39, currency_converter.convert(Currency.new(1, :EUR), :CAN).amount, 0.05
+  end
+
 
 
 end

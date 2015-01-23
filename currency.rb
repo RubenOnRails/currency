@@ -1,5 +1,5 @@
 class Currency
-  attr_accessor :amount, :code
+  attr_reader :amount, :code
   def initialize(amount, code)
     @amount = amount
     @code = code
@@ -16,7 +16,12 @@ class Currency
     end
   end
 
-  
+  def -(other)
+    if self.code == other.code
+      total = self.amount - other.amount
+      return Currency.new(total, @code)
+    end
+  end
 
 
 end

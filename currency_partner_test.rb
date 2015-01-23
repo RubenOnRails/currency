@@ -30,6 +30,12 @@ class CurrencyTest < Minitest::Test
     assert_equal 200, result.amount
   end
 
+  def test_05_currency_can_be_subracted
+    american_currency = Currency.new(101, "USD")
+    other_currency = Currency.new(100, "USD")
+    result = american_currency.-(other_currency)
+    assert_equal 1, result.amount
+  end
 
 
 end

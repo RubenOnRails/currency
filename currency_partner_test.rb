@@ -1,6 +1,7 @@
 require 'minitest/autorun'
 require 'minitest/pride'
 require './currency'
+require './different_currency_code_error'
 
 class CurrencyTest < Minitest::Test
   def test_00_currency_class_exists
@@ -37,5 +38,12 @@ class CurrencyTest < Minitest::Test
     assert_equal 1, result.amount
   end
 
+  def test_06_currency_error_when_adding_subtracting
+    american_currency = Currency.new(100, "USD")
+    other_currency = Currency.new(100, "CAN")
+    assert_raises DifferentCurrencyCodeError do
+      american_currency + other_currency && american_currency - other_currency
+    end
+  end
 
 end

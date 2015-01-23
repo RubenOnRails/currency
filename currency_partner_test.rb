@@ -46,4 +46,10 @@ class CurrencyTest < Minitest::Test
     end
   end
 
+  def test_07_currency_multiplied_by_fixnum_and_float
+    american_currency = Currency.new(100, "USD")
+    assert american_currency * 2 == Currency.new(200, "USD")
+    assert american_currency * 2.5 == Currency.new(250, "USD")
+  end
+
 end

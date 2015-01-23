@@ -25,8 +25,10 @@ class Currency
     else
       raise DifferentCurrencyCodeError
     end
-
   end
 
+  def *(num)
+   Currency.new(@amount * num, @code)
+  end
 
 end

@@ -6,12 +6,15 @@ class CurrencyConverter
   def convert(currency, code)
     if currency.code == code
      return currency
-    else
-     total = currency.amount / @hash[currency.code] * @hash[code]
+    end
+    if total = currency.amount / @hash[currency.code] * @hash[code]
      return Currency.new(total, code)
+    else
+     raise UnknownCurrencyCodeError
     end
   end
+end
 
-
+class UnknownCurrencyCodeError < StandardError
 
 end

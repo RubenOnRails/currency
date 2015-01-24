@@ -3,6 +3,7 @@ require 'minitest/pride'
 require './currency'
 require './different_currency_code_error'
 require './currency_converter'
+require './unknown_currency_code_error'
 
 class CurrencyTest < Minitest::Test
   def test_00_currency_class_exists
@@ -84,4 +85,12 @@ class CurrencyTest < Minitest::Test
 
 # Should be able to convert Currency in any currency code it knows about to Currency in any other currency code it knows about.
 
+  def test_14_raise_unknown_currency_code_error
+    currency_converter = CurrencyConverter.new({USD: 1, EUR: 0.89, CAN: 1.24})
+    assert_raises UnknownCurrencyCodeError do
+      currency_converter.convert(Currency.new(1, :USD), :PES)
+    end
+  end
+
+# Should raise an UnknownCurrencyCodeError when you try to convert from or to a currency code it doesnt know about.
 end

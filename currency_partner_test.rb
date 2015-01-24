@@ -77,6 +77,11 @@ class CurrencyTest < Minitest::Test
     assert_in_delta 1.39, currency_converter.convert(Currency.new(1, :EUR), :CAN).amount, 0.05
   end
 
+  def test_13_convert_currency_code_it_knows_about
+    currency_converter = CurrencyConverter.new({USD: 1, EUR: 0.89, CAN: 1.24})
+    assert_equal 0.89, currency_converter.convert(Currency.new(1, :USD), :EUR).amount
+  end
 
+# Should be able to convert Currency in any currency code it knows about to Currency in any other currency code it knows about.
 
 end

@@ -22,7 +22,6 @@ class Currency
     if self.code == other.code
       total = self.amount - other.amount
       return Currency.new(total, @code)
-    else
       raise DifferentCurrencyCodeError
     end
   end

@@ -1,4 +1,4 @@
-require './unknown_currency_code_error'
+
 class CurrencyConverter
   def initialize(hash)
     @hash = hash
